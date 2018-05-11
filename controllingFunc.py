@@ -293,20 +293,27 @@ def draw():
             if i==1:
                 if keys['u'] and topchecker:
                     upsc2+=xmov
-                    if (xd-.03125>=-.73 and xd-.03125<=-.41 and mov-.0625<=upsc2+.13 and mov-.0625>=upsc2-.13)or(xd+.03125>=-.73 and xd+.03125<=-.41 and mov-.0625<=upsc2+.13 and mov-.0625>=upsc2-.13):
+                    if (xd-.03125>=-.73 and xd-.03125<=-.41 and mov-.0625<=upsc2+.04 and mov-.0625>=upsc2-.04)or(xd+.03125>=-.73 and xd+.03125<=-.41 and mov-.0625<=upsc2+.04 and mov-.0625>=upsc2-.04):
                         mov+=xmov
-                elif keys['j']:
+                if keys['j'] :
                     upsc2-=xmov
-                    if (xd-.03125>=-.73 and xd-.03125<=-.41 and mov-.0625<=upsc2+.13 and mov-.0625>=upsc2-.13)or(xd+.03125>=-.73 and xd+.03125<=-.41 and mov-.0625<=upsc2+.13 and mov-.0625>=upsc2-.13):
+                    if (xd-.03125>=-.73 and xd-.03125<=-.41 and mov-.0625<=upsc2+.04 and mov-.0625>=upsc2-.04)or(xd+.03125>=-.73 and xd+.03125<=-.41 and mov-.0625<=upsc2+.04 and mov-.0625>=upsc2-.04):
                         mov-=xmov
+
                 glLoadIdentity()
+                glColor(.7,.7,.7)
                 glTranslate(0,upsc2,0)
-                glRotate(180, 0, 1, 0)
-                glScale(0.3,0.09,0)
-                square(1.9,1,0.7,0.7,0.7) # moving pad scene2
+                glBegin(GL_POLYGON)
+                glVertex(-.73,.08)
+                glVertex(-.73,0)
+                glVertex(-.41,0)
+                glVertex(-.41,.08)
+                glEnd()
+                 # moving pad scene2
             ### collision detection defenition
             ## the width of the character in pixels is 17 and its hight is 38
-
+            a,b=W_2_s(xd-.03125,-(mov+.0625))
+            topchecker = Xgenerate(a+2,b+2,ceil(15*ratiow),51)
             a,b=W_2_s(xd-.03125,-(mov-.0625))
             bottomchecker = Xgenerate(a+2,b-2,ceil(15*ratiow),51)
 
